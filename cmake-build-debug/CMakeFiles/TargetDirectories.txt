@@ -1,0 +1,3 @@
+/home/konoongglts/work/GameClub/cmake-build-debug/CMakeFiles/GameClub.dir
+/home/konoongglts/work/GameClub/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/konoongglts/work/GameClub/cmake-build-debug/CMakeFiles/rebuild_cache.dir
