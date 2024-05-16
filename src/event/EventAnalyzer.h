@@ -8,6 +8,7 @@
 class EventAnalyzer {
     void AnalyzeEvent(Event event);
     void EndTimeAnalyze();
+    void CreateNewEvent(std::tm time, std::string mes, EventIdE eventIdE);
     GameClub& gameClub;
     ResultPrinter& resultPrinter;
 public:

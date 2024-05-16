@@ -56,7 +56,16 @@
 				8,
 				10,
 				15,
-				17
+				17,
+				20,
+				22,
+				24,
+				26,
+				27,
+				28,
+				30,
+				32,
+				33
 			]
 		}
 	],
@@ -96,7 +105,16 @@
 				8,
 				10,
 				15,
-				17
+				17,
+				20,
+				22,
+				24,
+				26,
+				27,
+				28,
+				30,
+				32,
+				33
 			]
 		},
 		{
@@ -113,7 +131,13 @@
 				13,
 				14,
 				16,
-				18
+				18,
+				19,
+				21,
+				23,
+				25,
+				29,
+				31
 			]
 		}
 	],
@@ -192,7 +216,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/event/\u0441omparators/TmComparator.h",
+			"path" : "src/\u0441omparators/TmComparator.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -219,8 +243,92 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/event/\u0441omparators/ClientNameComparator.h",
+			"path" : "src/\u0441omparators/ClientNameComparator.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/gameClub/notOpenYet/NotOpenYetException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/gameClub/\u0441lientUnknown/ClientUnknownException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/\u0441lientUnknown/ClientUnknownException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/GameClubException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/exceptions/parsing/ParsingFileException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/parsing/ParsingFileException.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/exceptions/fileFormat/FileFormatException.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

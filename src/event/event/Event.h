@@ -12,10 +12,10 @@ class Event {
     std::vector<std::string>  strArgs;
     void DefineEventArgs(std::vector<std::string> args);
     void DefineTime(const std::string& strTime);
+    bool IsValidName(const std::string& str);
     std::tm time;
 public:
     explicit Event(std::vector<std::string> args);
-    explicit Event(std::tm, EventIdE id, std::string strArg);
     EventIdE GetId();
     std::string GetStrArg(int index);
     int GetIntArg(int index);

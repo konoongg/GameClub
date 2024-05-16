@@ -9,8 +9,8 @@
 #include "GameClubParamsT.h"
 #include "../event/event/Event.h"
 #include "../table/Table.h"
-#include "../event/сomparators/TmComparator.h"
-#include "../event/сomparators/ClientNameComparator.h"
+#include "../сomparators/TmComparator.h"
+#include "../сomparators/ClientNameComparator.h"
 
 class GameClub {
     std::tm startTm{};
@@ -37,5 +37,7 @@ public:
     void ClientLive(std::tm time, std::string clientName);
     void ClientWait(const std::string& clientName);
     void Close();
+    std::tm GetStartTime();
+    std::tm GetEndTime();
 };
 

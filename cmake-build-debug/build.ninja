@@ -97,6 +97,60 @@ build CMakeFiles/GameClub.dir/src/resultPrinter/ResultPrinter.cpp.o: CXX_COMPILE
   OBJECT_DIR = CMakeFiles/GameClub.dir
   OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/resultPrinter
 
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/youShallNotPass
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/notOpenYet
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/placeIsBusy
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/сlientUnknown/ClientUnknownException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/сlientUnknown/ClientUnknownException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/сlientUnknown/ClientUnknownException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/сlientUnknown
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/GameClubException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/GameClubException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/GameClubException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/soBigQueue
+
+build CMakeFiles/GameClub.dir/src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/gameClub/iCanWaitNoLonger
+
+build CMakeFiles/GameClub.dir/src/exceptions/parsing/ParsingFileException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/parsing/ParsingFileException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/parsing/ParsingFileException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/parsing
+
+build CMakeFiles/GameClub.dir/src/exceptions/fileFormat/FileFormatException.cpp.o: CXX_COMPILER__GameClub_unscanned_Debug /home/konoongglts/work/GameClub/src/exceptions/fileFormat/FileFormatException.cpp || cmake_object_order_depends_target_GameClub
+  DEP_FILE = CMakeFiles/GameClub.dir/src/exceptions/fileFormat/FileFormatException.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/GameClub.dir
+  OBJECT_FILE_DIR = CMakeFiles/GameClub.dir/src/exceptions/fileFormat
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GameClub
@@ -105,7 +159,7 @@ build CMakeFiles/GameClub.dir/src/resultPrinter/ResultPrinter.cpp.o: CXX_COMPILE
 #############################################
 # Link the executable GameClub
 
-build GameClub: CXX_EXECUTABLE_LINKER__GameClub_Debug CMakeFiles/GameClub.dir/src/main.cpp.o CMakeFiles/GameClub.dir/src/inputParser/InputParser.cpp.o CMakeFiles/GameClub.dir/src/gameClub/GameClub.cpp.o CMakeFiles/GameClub.dir/src/event/event/Event.cpp.o CMakeFiles/GameClub.dir/src/table/Table.cpp.o CMakeFiles/GameClub.dir/src/gameClub/GameClubCreator.cpp.o CMakeFiles/GameClub.dir/src/event/EventAnalyzer.cpp.o CMakeFiles/GameClub.dir/src/resultPrinter/ResultPrinter.cpp.o
+build GameClub: CXX_EXECUTABLE_LINKER__GameClub_Debug CMakeFiles/GameClub.dir/src/main.cpp.o CMakeFiles/GameClub.dir/src/inputParser/InputParser.cpp.o CMakeFiles/GameClub.dir/src/gameClub/GameClub.cpp.o CMakeFiles/GameClub.dir/src/event/event/Event.cpp.o CMakeFiles/GameClub.dir/src/table/Table.cpp.o CMakeFiles/GameClub.dir/src/gameClub/GameClubCreator.cpp.o CMakeFiles/GameClub.dir/src/event/EventAnalyzer.cpp.o CMakeFiles/GameClub.dir/src/resultPrinter/ResultPrinter.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/сlientUnknown/ClientUnknownException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/GameClubException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/parsing/ParsingFileException.cpp.o CMakeFiles/GameClub.dir/src/exceptions/fileFormat/FileFormatException.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/GameClub.dir
   POST_BUILD = :

@@ -1,6 +1,11 @@
 #include <algorithm>
 #include "GameClub.h"
-#include "../table/Table.h"
+#include "../exceptions/gameClub/youShallNotPass/YouShallNotPassException.h"
+#include "../exceptions/gameClub/notOpenYet/NotOpenYetException.h"
+#include "../exceptions/gameClub/placeIsBusy/PlaceIsBusyException.h"
+#include "../exceptions/gameClub/сlientUnknown/ClientUnknownException.h"
+#include "../exceptions/gameClub/soBigQueue/SoBigQueueException.h"
+#include "../exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.h"
 
 GameClub::GameClub(GameClubParamsT params) {
     price = params.price;
@@ -43,13 +48,13 @@ bool GameClub::CompareTm(std::tm tm1, std::tm tm2) {
 
 void GameClub::ClientCame(std::tm time, const std::string& clientName) {
     if(ClientExist(clientName)){
-        //
+        throw YouShallNotPassException {"YouShallNotPass"};
     }
     else if(CompareTm(time, startTm) && CompareTm(endTm, startTm)){
         clients.insert(clientName);
     }
     else{
-        //
+        throw NotOpenYetException{"NotOpenYet"};
     }
 }
 
@@ -64,14 +69,13 @@ bool GameClub::ClientExist(const std::string&  clientName){
 void GameClub::ClientSit(std::tm time, const std::string& clientName, int tableId) {
     if(tables[tableId - 1].IsEmpty()){
         if(!ClientExist(clientName)){
-            //
+            throw ClientUnknownException{"ClientUnknown"};
         }
         else {
             auto it = clientTable.find(clientName);
-            //нормально сделать пересадку
-
             if(it != clientTable.end()){
                 tables[clientTable[clientName]].EndWork(time, price);
+                tables[clientTable[clientName]].Cleared();
             }
             else{
                 countFreeTable--;
@@ -79,22 +83,23 @@ void GameClub::ClientSit(std::tm time, const std::string& clientName, int tableI
             }
             clientTable[clientName] = tableId - 1;
             tables[tableId - 1].StartWork(time);
+            tables[tableId - 1].Occupied();
         }
     }
     else{
-        //
+        throw PlaceIsBusyException{"PlaceIsBusy"};
     };
 }
 
 void GameClub::ClientWait(const std::string& clientName) {
     if(!ClientExist(clientName)){
-        //
+        throw ClientUnknownException{"ClientUnknown"};
     }
     if(countFreeTable > 0){
-        //
+        throw ICanWaitNoLongerException{"ICanWaitNoLonger"};
     }
     else if(clientsWait.size() >= countTable){
-        //
+        throw SoBigQueueException{"SoBigQueue"};
     }
     else{
         clientsWait.push(clientName);
@@ -103,7 +108,7 @@ void GameClub::ClientWait(const std::string& clientName) {
 
 void GameClub::ClientLive(std::tm time, std::string clientName) {
     if(!ClientExist(clientName)){
-        //
+        throw ClientUnknownException{"ClientUnknown"};
     }
     auto it = clientTable.find(clientName);
     if(it != clientTable.end()){
@@ -120,23 +125,42 @@ void GameClub::ClientLive(std::tm time, std::string clientName) {
             std::string newClientName = clientsWait.front();
             clientsWait.pop();
             clientTable[newClientName] = tableId;
+            std::vector<std::string> args;
+            args.push_back(std::to_string(time.tm_hour) + ":" + std::to_string(time.tm_min));
+            args.push_back(std::to_string(static_cast<int>(EventIdE::SIT_AT_EMPTY_TABLE)));
+            args.push_back(newClientName);
+            args.push_back(std::to_string(tableId));
+            Event newEvent(args);
+            AddEvent(time, newEvent);
         }
     }
 }
 
 void GameClub::Close() {
-    for(auto table : tables){
+    for(auto& table : tables){
         if(!table.IsEmpty()){
             table.EndWork(endTm, price);
             table.Cleared();
         }
     }
     for(const auto& client : clients){
-        Event endEvent(endTm, EventIdE::LEAVE_AT_END, client);
+        std::vector<std::string> args;
+        args.push_back(std::to_string(endTm.tm_hour) + ":" + std::to_string(endTm.tm_min));
+        args.push_back(std::to_string(static_cast<int>(EventIdE::EXCEPTION)));
+        args.push_back(client);
+        Event endEvent(args);
         timeLine[endTm].push_back(endEvent);
     }
 }
 
 std::vector<Table> &GameClub::GetTable() {
     return tables;
+}
+
+std::tm GameClub::GetStartTime() {
+    return startTm;
+}
+
+std::tm GameClub::GetEndTime() {
+    return endTm;
 }

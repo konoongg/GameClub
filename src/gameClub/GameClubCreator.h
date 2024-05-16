@@ -12,6 +12,7 @@ class GameClubCreator {
     void InitPrice(InputParser& parser, GameClubParamsT& params);
     std::tm ParseTime(const std::string& strTime);
     void InitEvents(InputParser& parser, GameClub& gameClub);
+    int fileStrIndex;
 public:
     GameClub CreateGameClub(InputParser& parser);
 };

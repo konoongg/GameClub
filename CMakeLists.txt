@@ -16,9 +16,25 @@ add_executable(GameClub src/main.cpp
         src/gameClub/GameClubCreator.cpp
         src/event/event/EventIdE.h
         src/gameClub/GameClubParamsT.h
-        src/event/сomparators/TmComparator.h
+        src/сomparators/TmComparator.h
         src/event/EventAnalyzer.h
         src/event/EventAnalyzer.cpp
         src/resultPrinter/ResultPrinter.h
         src/resultPrinter/ResultPrinter.cpp
-        src/event/сomparators/ClientNameComparator.h)
+        src/сomparators/ClientNameComparator.h
+        "src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.h"
+        "src/exceptions/gameClub/youShallNotPass/YouShallNotPassException.cpp"
+        "src/exceptions/gameClub/notOpenYet/NotOpenYetException.h"
+        "src/exceptions/gameClub/notOpenYet/NotOpenYetException.cpp"
+        "src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.h"
+        "src/exceptions/gameClub/placeIsBusy/PlaceIsBusyException.cpp"
+        "src/exceptions/gameClub/сlientUnknown/ClientUnknownException.h"
+        "src/exceptions/gameClub/сlientUnknown/ClientUnknownException.cpp"
+        "src/exceptions/gameClub/GameClubException.cpp"
+        "src/exceptions/gameClub/soBigQueue/SoBigQueueException.cpp"
+        "src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.h"
+        "src/exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.cpp"
+        src/exceptions/parsing/ParsingFileException.h
+        src/exceptions/parsing/ParsingFileException.cpp
+        src/exceptions/fileFormat/FileFormatException.cpp
+)
