@@ -11,6 +11,7 @@ class EventAnalyzer {
     void CreateNewEvent(std::tm time, std::string mes, EventIdE eventIdE);
     GameClub& gameClub;
     ResultPrinter& resultPrinter;
+    TimeFixer timeFixer;
 public:
     explicit EventAnalyzer(GameClub& gameClub, ResultPrinter& resultPrinter);
     void AnalyzeTimeLine();

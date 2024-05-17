@@ -10,11 +10,12 @@ class Event {
     EventIdE eventId;
     std::vector<int>  intArgs;
     std::vector<std::string>  strArgs;
-    void DefineEventArgs(std::vector<std::string> args);
+    void DefineEventArgs(std::vector<std::string> args, int countTable);
     void DefineTime(const std::string& strTime);
     bool IsValidName(const std::string& str);
     std::tm time;
 public:
+    explicit Event(std::vector<std::string> args, int countTable);
     explicit Event(std::vector<std::string> args);
     EventIdE GetId();
     std::string GetStrArg(int index);

@@ -6,12 +6,14 @@
 #include "Event.h"
 #include "../../exceptions/fileFormat/FileFormatException.h"
 
+#define COUNT_TABLE_NO_IMPORTANT 1
+
 bool Event::IsValidName(const std::string& str) {
     std::regex pattern("[a-z0-9_\\-]+");
     return std::regex_match(str, pattern);
 }
 
-void Event::DefineEventArgs(std::vector<std::string> args){
+void Event::DefineEventArgs(std::vector<std::string> args, int countTable){
     if(eventId == EventIdE::CAME){
         if(args.size() != 3){
             throw FileFormatException{"wrong format of event"};
@@ -38,7 +40,7 @@ void Event::DefineEventArgs(std::vector<std::string> args){
         catch (const std::out_of_range& e) {
             throw FileFormatException{"wrong format of event"};
         }
-        if(intArgs[0] < 0 ){
+        if(intArgs[0] < 0  || intArgs[0] > countTable){
             throw FileFormatException{"wrong format of event"};
         }
     }
@@ -77,7 +79,7 @@ void Event::DefineEventArgs(std::vector<std::string> args){
         catch (const std::out_of_range& e) {
             throw FileFormatException{"wrong format of event"};
         }
-        if(intArgs[0] < 0 ){
+        if(intArgs[0] < 0 || intArgs[0] > countTable){
             throw FileFormatException{"wrong format of event"};
         }
     }
@@ -98,7 +100,7 @@ void Event::DefineEventArgs(std::vector<std::string> args){
         catch (const std::out_of_range& e) {
             throw FileFormatException{"wrong format of event"};
         }
-        if(intArgs[0] < 0 ){
+        if(intArgs[0] < 0 || intArgs[0] > countTable){
             throw FileFormatException{"wrong format of event"};
         }
     }
@@ -112,7 +114,13 @@ void Event::DefineEventArgs(std::vector<std::string> args){
 
 void Event::DefineTime(const std::string& strTime){
     if(strTime.size() != 5){
-        //throw FileFormatException{"wrong format of event"};
+        throw FileFormatException{"wrong format of event"};
+    }
+    if(strTime[0] > '9' ||strTime[0] < '0' || strTime[1] > '9' ||strTime[1] < '0'  || strTime[3] > '9' ||strTime[3] < '0'  || strTime[4] > '9' ||strTime[4] < '0' ){
+        throw FileFormatException{"wrong format of event"};
+    }
+    if(strTime[2] != ':'){
+        throw FileFormatException{"wrong format of event"};
     }
     std::tm time{};
     std::istringstream iss(strTime);
@@ -123,12 +131,12 @@ void Event::DefineTime(const std::string& strTime){
     this->time = time;
 }
 
-Event::Event(std::vector<std::string> args) {
+Event::Event(std::vector<std::string> args, int countTable) {
     try{
         DefineTime(args[0]);
         int id = std::stoi(args[1]);
         eventId = static_cast<EventIdE>(id);
-        DefineEventArgs(args);
+        DefineEventArgs(args, countTable);
     }
     catch(FileFormatException& err){
         throw err;
@@ -149,5 +157,17 @@ int Event::GetIntArg(int index) {
 
 std::tm Event::GetTime() {
     return time;
+}
+
+Event::Event(std::vector<std::string> args) {
+    try{
+        DefineTime(args[0]);
+        int id = std::stoi(args[1]);
+        eventId = static_cast<EventIdE>(id);
+        DefineEventArgs(args, COUNT_TABLE_NO_IMPORTANT);
+    }
+    catch(FileFormatException& err){
+        throw err;
+    }
 }
 

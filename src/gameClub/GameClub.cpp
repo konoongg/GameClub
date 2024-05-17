@@ -6,6 +6,7 @@
 #include "../exceptions/gameClub/сlientUnknown/ClientUnknownException.h"
 #include "../exceptions/gameClub/soBigQueue/SoBigQueueException.h"
 #include "../exceptions/gameClub/iCanWaitNoLonger/ICanWaitNoLongerException.h"
+#include "../exceptions/fileFormat/FileFormatException.h"
 
 GameClub::GameClub(GameClubParamsT params) {
     price = params.price;
@@ -145,11 +146,16 @@ void GameClub::Close() {
     }
     for(const auto& client : clients){
         std::vector<std::string> args;
-        args.push_back(std::to_string(endTm.tm_hour) + ":" + std::to_string(endTm.tm_min));
+        args.push_back(timeFixer.ToFixedWidthString(endTm.tm_hour) + ":" + timeFixer.ToFixedWidthString(endTm.tm_min));
         args.push_back(std::to_string(static_cast<int>(EventIdE::EXCEPTION)));
         args.push_back(client);
-        Event endEvent(args);
-        timeLine[endTm].push_back(endEvent);
+        try{
+            Event endEvent(args);
+            timeLine[endTm].push_back(endEvent);
+        }
+        catch(FileFormatException& err){
+            throw err;
+        }
     }
 }
 
@@ -163,4 +169,8 @@ std::tm GameClub::GetStartTime() {
 
 std::tm GameClub::GetEndTime() {
     return endTm;
+}
+
+int GameClub::GetCountTable() {
+    return countTable;
 }

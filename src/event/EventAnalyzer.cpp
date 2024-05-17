@@ -2,6 +2,7 @@
 #include "../exceptions/gameClub/notOpenYet/NotOpenYetException.h"
 #include "../exceptions/gameClub/youShallNotPass/YouShallNotPassException.h"
 #include "../exceptions/gameClub/soBigQueue/SoBigQueueException.h"
+#include "../exceptions/fileFormat/FileFormatException.h"
 
 
 EventAnalyzer::EventAnalyzer(GameClub& gameClub, ResultPrinter& resultPrinter) : gameClub(gameClub),  resultPrinter(resultPrinter) {}
@@ -10,10 +11,20 @@ void EventAnalyzer::AnalyzeTimeLine() {
     for(auto & it : gameClub.GetTimeLine()){
         const std::vector<Event>& events = it.second;
         for(const auto& event : events){
-            AnalyzeEvent(event);
+            try{
+                AnalyzeEvent(event);
+            }
+            catch(FileFormatException& err){
+                throw err;
+            }
         }
     }
-    EndTimeAnalyze();
+    try{
+        EndTimeAnalyze();
+    }
+    catch(FileFormatException& err){
+        throw err;
+    }
 }
 
 void EventAnalyzer::AnalyzeEvent(Event event) {
@@ -23,7 +34,12 @@ void EventAnalyzer::AnalyzeEvent(Event event) {
             gameClub.ClientCame(event.GetTime(), event.GetStrArg(0));
         }
         catch(GameClubException& err){
-            CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            try{
+                CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            }
+            catch(FileFormatException& err){
+                throw err;
+            }
         }
     }
     else if(id == EventIdE::SIT_AT_TABLE){
@@ -31,7 +47,12 @@ void EventAnalyzer::AnalyzeEvent(Event event) {
             gameClub.ClientSit(event.GetTime(), event.GetStrArg(0), event.GetIntArg(0));
         }
         catch(GameClubException& err){
-            CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            try{
+                CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            }
+            catch(FileFormatException& err){
+                throw err;
+            }
         }
     }
     else if(id == EventIdE::WAIT){
@@ -40,10 +61,20 @@ void EventAnalyzer::AnalyzeEvent(Event event) {
         }
         catch(SoBigQueueException& err){
             gameClub.ClientLive(event.GetTime(), event.GetStrArg(0));
-            CreateNewEvent(event.GetTime(), err.what(), EventIdE::LEAVE_AT_END);
+            try{
+                CreateNewEvent(event.GetTime(), err.what(), EventIdE::LEAVE_AT_END);
+            }
+            catch(FileFormatException& err){
+                throw err;
+            }
         }
         catch(GameClubException& err){
-            CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            try{
+                CreateNewEvent(event.GetTime(), err.what(), EventIdE::EXCEPTION);
+            }
+            catch(FileFormatException& err){
+                throw err;
+            }
         }
     }
     else if(id == EventIdE::LEAVE){
@@ -52,16 +83,26 @@ void EventAnalyzer::AnalyzeEvent(Event event) {
 }
 
 void EventAnalyzer::EndTimeAnalyze() {
-    gameClub.Close();
+    try{
+        gameClub.Close();
+    }
+    catch(FileFormatException& err){
+        throw err;
+    }
     resultPrinter.PrintGameClub(gameClub);
 }
 
 void EventAnalyzer::CreateNewEvent(std::tm time, std::string mes, EventIdE eventIdE) {
     std::vector<std::string> args;
-    args.push_back(std::to_string(time.tm_hour) + ":" + std::to_string(time.tm_min));
+    args.push_back(timeFixer.ToFixedWidthString(time.tm_hour) + ":" + timeFixer.ToFixedWidthString(time.tm_min));
     args.push_back(std::to_string(static_cast<int>(eventIdE)));
     args.push_back(mes);
-    Event newEvent(args);
-    gameClub.AddEvent(time, newEvent);
+    try{
+        Event newEvent(args);
+        gameClub.AddEvent(time, newEvent);
+    }
+    catch(FileFormatException& err){
+        throw err;
+    }
 }
 

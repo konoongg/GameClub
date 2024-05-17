@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.22)
 project(GameClub)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -37,4 +37,6 @@ add_executable(GameClub src/main.cpp
         src/exceptions/parsing/ParsingFileException.h
         src/exceptions/parsing/ParsingFileException.cpp
         src/exceptions/fileFormat/FileFormatException.cpp
+        src/timeFixer/TimeFixer.h
+        src/timeFixer/TimeFixer.cpp
 )

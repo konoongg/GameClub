@@ -11,6 +11,7 @@
 #include "../table/Table.h"
 #include "../сomparators/TmComparator.h"
 #include "../сomparators/ClientNameComparator.h"
+#include "../timeFixer/TimeFixer.h"
 
 class GameClub {
     std::tm startTm{};
@@ -23,6 +24,7 @@ class GameClub {
     std::vector<Table> tables;
     std::queue<std::string> clientsWait;
     std::set<std::string, ClientNameCompare> clients;
+    TimeFixer timeFixer;
 
     bool CompareTm(std::tm tm1, std::tm tm2);
     bool ClientExist(const std::string& clientName);
@@ -37,6 +39,7 @@ public:
     void ClientLive(std::tm time, std::string clientName);
     void ClientWait(const std::string& clientName);
     void Close();
+    int GetCountTable();
     std::tm GetStartTime();
     std::tm GetEndTime();
 };

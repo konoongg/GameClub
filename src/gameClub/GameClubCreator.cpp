@@ -74,11 +74,21 @@ GameClubParamsT GameClubCreator::InitGameClubParams(InputParser& parser){
 
 void GameClubCreator::InitEvents(InputParser &parser, GameClub &gameClub) {
     std::vector<std::string> parsedLine = parser.GetWords();
+    std::tm oldTime;
+    oldTime.tm_hour = 0;
+    oldTime.tm_min = 0;
     while(!parsedLine.empty()){
         try{
             std::tm time = ParseTime(parsedLine[0]);
-            Event event (parsedLine);
+            if(oldTime.tm_hour > time.tm_hour){
+                throw FileFormatException{"wrong format of event, string: " + std::to_string(fileStrIndex)};
+            }
+            else if (oldTime.tm_hour == time.tm_hour && oldTime.tm_min > time.tm_min){
+                throw FileFormatException{"wrong format of event, string: " + std::to_string(fileStrIndex)};
+            }
+            Event event (parsedLine, gameClub.GetCountTable());
             gameClub.AddEvent(time, event);
+            oldTime = time;
         }
         catch(FileFormatException& err){
             throw FileFormatException{"wrong format of event, string: " + std::to_string(fileStrIndex)};
